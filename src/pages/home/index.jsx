@@ -6,13 +6,14 @@ const Home = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
 
+  // Efecto para obtener todas las categorías al cargar la página
   useEffect(() => {
     const fetchCategories = async () => {
       const data = await getAllCategories();
-      console.log("Categorías cargadas:", data); // 👈 Agrega esta línea
+      console.log("Categorías cargadas:", data);
       setCategories(data);
     };
-  
+    
     fetchCategories();
   }, []);
 

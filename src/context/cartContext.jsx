@@ -1,10 +1,13 @@
 // En cartContext.js
 import { createContext, useContext, useReducer, useEffect } from "react";
 
+// Este contexto se utiliza para manejar el carrito de compras en la aplicación.
 const CartContext = createContext();
 
+// Inicializamos el carrito desde el localStorage o como un array vacío si no hay datos guardados.
 const initialCart = JSON.parse(localStorage.getItem("cart")) || [];
 
+// Reducer para manejar las acciones del carrito
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
@@ -26,6 +29,7 @@ const cartReducer = (state, action) => {
   }
 };
 
+// CartProvider es un componente que envuelve la aplicación y proporciona el contexto del carrito.
 export const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialCart);
 

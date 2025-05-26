@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  // Función para manejar el envío del formulario de inicio de sesión
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');

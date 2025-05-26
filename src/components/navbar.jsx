@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cartContext';
 import { useAuth } from '../context/authContext';
-import { ShoppingCart } from 'lucide-react'; // usando Lucide para íconos
+import { ShoppingCart } from 'lucide-react';
 
 const Navbar = () => {
   const { cart } = useCart();

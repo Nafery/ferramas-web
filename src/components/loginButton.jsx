@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Componente de botón de inicio de sesión
 const LoginButton = () => {
   const navigate = useNavigate();
 

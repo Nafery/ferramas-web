@@ -14,6 +14,7 @@ const WebpayConfirmacion = () => {
   const orden = searchParams.get('orden');
   const status = searchParams.get('status');
 
+  // 🧹 Limpiar el localStorage al cargar la página
   useEffect(() => {
     const data = localStorage.getItem('productos_pagados');
     if (data) {
@@ -37,6 +38,7 @@ const WebpayConfirmacion = () => {
     dispatch({ type: 'CLEAR_CART' });
   }, [dispatch]);
 
+  // Validar que los parámetros necesarios estén presentes
   if (!amount || !orden || !status) {
     return <p>Error al confirmar el pago: parámetros incompletos.</p>;
   }

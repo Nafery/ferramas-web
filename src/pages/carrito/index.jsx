@@ -7,6 +7,7 @@ const Carrito = () => {
   const [conversion, setConversion] = useState(null);
   const { cart, dispatch } = useCart();
 
+  // Función para eliminar un producto del carrito
   const removeFromCart = (productId) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: { id: productId } });
   };
@@ -19,6 +20,7 @@ const Carrito = () => {
     return acc;
   }, 0);
 
+  // Efecto para convertir el total a otras monedas
   useEffect(() => {
     if (total > 0) {
       convertirCLP(total)

@@ -9,7 +9,7 @@ export const loginUser = async (email, password) => {
       password,
     });
 
-    return response.data; // Aquí podrías obtener el usuario o token según tu backend
+    return response.data;
   } catch (error) {
     if (error.response && error.response.status === 401) {
       throw new Error('Credenciales incorrectas');

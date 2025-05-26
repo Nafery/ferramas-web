@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cartContext';
-import { ShoppingCart } from 'lucide-react'; // Usa tu ícono preferido o un SVG
+import { ShoppingCart } from 'lucide-react';
 
+// Componente de Botón de carrito
 const CartButton = () => {
   const { cart } = useCart();
   const navigate = useNavigate();

@@ -5,12 +5,13 @@ import { useCart } from '../../context/cartContext';
 import { convertirCLP } from '../../services/currencyService';
 
 const Categoria = () => {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const [products, setProducts] = useState([]);
   const [conversions, setConversions] = useState({});
   const categoryName = products.length > 0 ? products[0].categoria : '';
   const { dispatch } = useCart();
 
+  // Efecto para obtener productos por categoría
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProductsByCategory(id);
@@ -35,6 +36,7 @@ const Categoria = () => {
     fetchData();
   }, [id]);
 
+  // Función para agregar un producto al carrito
   const handleAddToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
     console.log("Producto agregado:", product);
