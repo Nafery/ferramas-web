@@ -1,0 +1,43 @@
+// En cartContext.js
+import { createContext, useContext, useReducer, useEffect } from "react";
+
+const CartContext = createContext();
+
+const initialCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD_TO_CART":
+      const existing = state.find(product => product.id === action.payload.id);
+      if (existing) {
+        return state.map(product =>
+          product.id === action.payload.id
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        );
+      }
+      return [...state, { ...action.payload, quantity: 1 }];
+    case "REMOVE_FROM_CART":
+      return state.filter(product => product.id !== action.payload);
+    case "CLEAR_CART":
+      return [];
+    default:
+      return state;
+  }
+};
+
+export const CartProvider = ({ children }) => {
+  const [cart, dispatch] = useReducer(cartReducer, initialCart);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  return (
+    <CartContext.Provider value={{ cart, dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export const useCart = () => useContext(CartContext);
